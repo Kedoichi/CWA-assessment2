@@ -1,6 +1,12 @@
 version: "3.8"
-
+# http://localhost:8080 - NGINX
+# http://localhost:3000 - Front End
+# http://localhost:5000 - API
+# http://localhost:5432 - Postgres
 #Update the connection among these microservices before starting the container.
+networks:
+  app_network:
+    driver: bridge
 
 services:
   nginx:
@@ -8,25 +14,38 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
     ports:
-      - 80:80
-      
+      - 8080:80 # Change from 80 to 80808 due to port in used
+    depends_on:
+      - frontend
+      - api
+    networks:
+      - app_network
+
   frontend:
-    build: 
+    build:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
       - 3000:3000
     volumes:
       - ./frontend:/app
-  
+    depends_on:
+      - api
+    networks:
+      - app_network
+
   api:
-    build: 
+    build:
       context: ./api
       dockerfile: Dockerfile
     ports:
       - 5000:5000
     volumes:
       - ./api:/app
+    depends_on:
+      - db
+    networks:
+      - app_network
 
   db:
     image: postgres:15.3-alpine3.18
@@ -36,3 +55,5 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
+    networks:
+      - app_network
