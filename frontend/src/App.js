@@ -71,7 +71,8 @@ function App() {
             Add Contact
           </button>
         </div>
-        <hr />
+        {contacts.length > 0 && <hr />}
+
         <div className="contactList">
           {contacts.map((contact) => (
             <ContactCard
@@ -146,11 +147,17 @@ function ContactCard({ contact, deleteContact, fetchData }) {
   return (
     <div className="Card">
       <div className="Info">
-        {contact.name}
-        <button onClick={() => deleteContact(contact.id)}>Delete</button>
-        <button onClick={() => setShowPhones(!showPhones)}>
-          {showPhones ? "Hide" : "View Phones"}
-        </button>
+        <div className="name" onClick={() => setShowPhones(!showPhones)}>
+          {contact.name}
+        </div>
+        <div className="function">
+          <button className="delete" onClick={() => deleteContact(contact.id)}>
+            Delete
+          </button>
+          <button className="view" onClick={() => setShowPhones(!showPhones)}>
+            {showPhones ? "Hide" : "View Phones"}
+          </button>
+        </div>
       </div>
 
       {showPhones && (
@@ -169,7 +176,10 @@ function ContactCard({ contact, deleteContact, fetchData }) {
                   <td>{phone.name}</td>
                   <td>{phone.number}</td>
                   <td>
-                    <button onClick={() => deletePhone(phone.id)}>
+                    <button
+                      className="delete"
+                      onClick={() => deletePhone(phone.id)}
+                    >
                       Delete
                     </button>
                   </td>
@@ -193,7 +203,9 @@ function ContactCard({ contact, deleteContact, fetchData }) {
                   />
                 </td>
                 <td>
-                  <button onClick={addPhone}>Add Phone</button>
+                  <button className="addPhone" onClick={addPhone}>
+                    Add Phone
+                  </button>
                 </td>
               </tr>
             </tbody>

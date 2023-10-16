@@ -4,6 +4,7 @@ body,
   width: 100vw;
   height: 100vh;
   margin: 0;
+  font-family: "Quicksand", sans-serif;
 }
 
 .Container {
@@ -24,6 +25,7 @@ body,
   border-radius: 20px;
   box-shadow: 3px 2px 10px rgba(0, 0, 0, 0.5);
   width: 60vw;
+  padding: 20px 0px;
 }
 .addName {
   display: flex;
@@ -48,7 +50,7 @@ body,
   padding: 0 10px;
   font-size: 1.5rem;
   background-color: #4caf50;
-  color: white;
+  color: #f6fdc3;
 }
 hr {
   width: 90%;
@@ -82,41 +84,76 @@ hr {
 .Info {
   padding: 10px 20px;
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
 }
-
-.Info button {
+.name {
+  flex: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: light;
+  font-style: italic;
+}
+.function {
+  flex: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+button {
   margin-left: 10px;
-  padding: 5px 15px;
+  padding: 10px 15px;
   border: none;
-  background-color: #3498db;
-  color: white;
+  color: black;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s;
+  font-weight: bolder;
 }
 
+.delete {
+  background-color: #ff8080;
+}
+.addPhone {
+  background-color: #4caf50;
+}
+.view {
+  background-color: #ffcf96;
+}
 .Info button:hover {
-  background-color: #2980b9;
+  background-color: #f0edd4;
 }
 
 .Phones {
   padding: 10px 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .Phones table {
-  width: 100%;
+  width: 90%;
   border-collapse: collapse;
 }
-
+.Phones button {
+  color: white;
+}
 .Phones th,
 .Phones td {
-  border: 1px solid #e0e0e0;
   padding: 8px 15px;
   text-align: left;
 }
-
+.Phones thead {
+  background-color: rgba(0, 152, 122, 0.4);
+  color: white;
+}
+.Phones tr:nth-child(even):not(:last-child) {
+  background-color: #f3f3f3;
+}
 .AddPhones {
   padding: 10px 20px;
   display: flex;
@@ -133,8 +170,8 @@ hr {
 .AddPhones button {
   padding: 5px 15px;
   border: none;
-  background-color: #2ecc71;
-  color: white;
+  background-color: #cdfad5;
+  color: #f6fdc3;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s;
