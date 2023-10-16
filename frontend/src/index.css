@@ -120,6 +120,7 @@ button {
 }
 .addPhone {
   background-color: #4caf50;
+  color: #f6fdc3;
 }
 .view {
   background-color: #ffcf96;
@@ -139,13 +140,23 @@ button {
   width: 90%;
   border-collapse: collapse;
 }
+table td input,
+table td button {
+  width: 100%;
+  height: 2rem;
+  text-align: center;
+}
+table th,
+table td {
+  text-align: center;
+}
+
 .Phones button {
   color: white;
 }
 .Phones th,
 .Phones td {
   padding: 8px 15px;
-  text-align: left;
 }
 .Phones thead {
   background-color: rgba(0, 152, 122, 0.4);

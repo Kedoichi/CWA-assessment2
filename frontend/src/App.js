@@ -123,6 +123,10 @@ function ContactCard({ contact, deleteContact, fetchData }) {
   };
 
   const addPhone = async () => {
+    if (newPhoneName.trim() === "" || newPhoneNumber.trim() === "") {
+      alert("Phone name and number cannot be blank");
+      return;
+    }
     try {
       await fetchData(
         `http://localhost:5000/api/contacts/${contact.id}/phones`,
@@ -159,6 +163,7 @@ function ContactCard({ contact, deleteContact, fetchData }) {
           </button>
         </div>
       </div>
+      {phones.length > 0 && showPhones == true && <hr />}
 
       {showPhones && (
         <div className="Phones">
